@@ -1,9 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Platform, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import {FontAwesome5} from '@expo/vector-icons';
 
 function App() {
   return (
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding': 'height'}
+    >
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <View style={styles.container}>
       <StatusBar backgroundColor='#FFF' transLucent={false} />
 
@@ -47,6 +51,8 @@ function App() {
       </View>
 
     </View>
+    </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
 
